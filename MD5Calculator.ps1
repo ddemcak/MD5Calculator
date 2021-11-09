@@ -6,7 +6,7 @@ Write-Host '------------------------------' -ForegroundColor Yellow
 If ($args.Count -ne 1)
 {
     #Write-Host 'Please provide hash filename!' -ForegroundColor Red
-    $hashfile = Read-Host -Prompt "Please provide hash filename"
+    $hashfile = Read-Host -Prompt "Please provide hash filename!"
     
 }
 Else
@@ -21,7 +21,7 @@ Write-Host "MD5 filename: $hashfile"
 If (Test-Path -Path $hashfile -PathType leaf)
 {
     Remove-Item $hashfile
-    Write-Host "$hashfile was deleted, beause it's not needed anymore." -ForegroundColor Red
+    Write-Host "$hashfile was deleted, because it's not needed anymore." -ForegroundColor Red
 }
 
 # Get the path without the filename.
