@@ -1,5 +1,5 @@
 # MD5 Calculator
-Small script capable of calculating MD5 hash of all files within the directory
+Small script capable of calculating MD5 hash of all files within the directory.
 
 # Parameters
 Only one parameter is required with provided filepath of file that will contains all calculated MD5s within the same directory.
