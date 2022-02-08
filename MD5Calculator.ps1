@@ -1,5 +1,5 @@
 Write-Host '------------------------------' -ForegroundColor Yellow
-Write-Host '        MD5 Calculator        ' -ForegroundColor Yellow
+Write-Host '     MD5 Calculator v1.1      ' -ForegroundColor Yellow
 Write-Host '------------------------------' -ForegroundColor Yellow
 
 # Check if a 1 paramter1 were given.
@@ -39,9 +39,13 @@ Foreach-Object {
     $filehash = $md5.Hash.ToLower()
     $filename = $_
 
-    $fileContent += "$filehash  $filename`n" 
+    $fileContent += "$filehash  $filename`r`n" 
 }
 
-# Print MD5 hashes to file.
-$fileContent | Out-File -FilePath $hashfile -NoNewline
+# Remove last trailing newline `r`n characters.
+$fileContent = $fileContent.Substring(0, $fileContent.Length - 2)
+
+# Print MD5 hashes to file and use UTF-8 (no BOM).
+$utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
+[System.IO.File]::WriteAllLines($hashfile, $fileContent, $utf8NoBomEncoding)
 Write-Host "$hashfile was created." -ForegroundColor Green
